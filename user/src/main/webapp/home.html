@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>Add New Employee</h1>
+<form action="LoginServlet" method="post">
+<label>Name</label>
+<input type="text" name="name" >
+<br>
+<label>Password</label>
+<input type="password" name="password" >
+<br>
+<label>Email</label>
+<input type="email" name="email" >
+<br>
+<label>Country</label>
+<select name="country">
+<option value="India">India</option>
+<option  value="UK">UK</option>
+<option  value="USA">USA</option>
+<option  value="China">China</option>
+<option  value="Japan">Japan</option>
+</select>
+<br>
+<input type="submit" placeholder="Submit">
+</form>
+<a href="ViewServlet">View Employee</a>
+</body>
+</html>
