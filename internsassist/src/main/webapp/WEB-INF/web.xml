@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+<security-constraint>
+    <web-resource-collection>
+        <web-resource-name>Secure Area</web-resource-name>
+        <url-pattern>/User</url-pattern> <!-- Protect home.jsp -->
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>admin</role-name>
+      <role-name>gc</role-name>
+      <role-name>intern</role-name>
+    </auth-constraint>
+</security-constraint>
+
+<security-constraint>
+    <web-resource-collection>
+        <web-resource-name>Secure Area</web-resource-name>
+        <url-pattern>/secure/gc/*</url-pattern> <!-- Protect home.jsp -->
+    </web-resource-collection>
+    <auth-constraint> 
+      <role-name>gc</role-name>  
+          <role-name>admin</role-name>
+    </auth-constraint>
+</security-constraint>
+
+
+<security-constraint>
+    <web-resource-collection>
+        <web-resource-name>Secure Area</web-resource-name>
+        <url-pattern>/secure/admin/*</url-pattern> <!-- Protect home.jsp -->
+    </web-resource-collection>
+    <auth-constraint> 
+      <role-name>admin</role-name>  
+
+    </auth-constraint>
+</security-constraint>
+
+<security-role>
+    <role-name>admin</role-name>
+</security-role>
+
+<security-role>
+    <role-name>gc</role-name>
+</security-role>
+
+<security-role>
+    <role-name>intern</role-name>
+</security-role>
+
+  <!-- Specify login configuration -->
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <form-login-config>
+            <form-login-page>/login.jsp</form-login-page>
+            <form-error-page>/login-error.jsp</form-error-page>
+        </form-login-config>        
+    </login-config>
+
+    <!-- Error Handling -->
+    <error-page>
+        <error-code>401</error-code>
+        <location>/login-error.jsp</location>
+    </error-page>
+
+ <error-page>
+        <error-code>404</error-code>
+        <location>/login-errorpage.jsp</location>
+    </error-page>
+
+<error-page>
+    <error-code>403</error-code>
+    <location>/login-failed.html</location>
+</error-page>
+
+    <!-- Welcome File -->
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+
+</web-app>
